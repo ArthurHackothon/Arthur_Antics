@@ -1,0 +1,192 @@
+<!-- 16 possible radio buttons ---><!-- 16 possible radio buttons ---><html><head>
+	<link href="Antics.css" rel="stylesheet" type="text/css">
+</head>
+<body onload="getPictures()">
+
+<div id="content">
+<h1>This link brings you to an unfinished quiz!</h1>
+<!--instructions  and legend for buttons--->
+<ul>
+	<h2>Legend</h2>
+	<li>Mad libs</li>
+	<li>(B) American Gothic </li> 
+	<li>(C) The Kiss </li>
+	<li>(D) Turquoise Marilyn</li>
+	<li>(E) Muhammed Ali</li>
+	<li>(F) Hulk </li>
+	<li>(G) Whale Watchers</li>
+	<li>(H) Mickey Mouse </li>
+	<li>(I) Mount Rushmore</li>
+	<li>(G) Ice Cream Cone</li>
+	<li>(K) Rocky Balboa</li>
+	<li>(L) Pikachu</li>
+	<li>(M) The Thinker</li>
+	<li>(N) Stary Night</li>
+	<li>(O) The Great Wave off Kanaqawa</li>
+	<li>(P) Mona Lisa</li>
+</ul> 
+<form>
+<!-- 16 possible radio buttons --->
+<fieldset>
+
+<input type="radio" value="M" name="rdo">(M)
+<input type="radio" value="E" name="rdo">(E)
+<input type="radio" value="N" name="rdo">(N)
+<input type="radio" value="O" name="rdo">(O)
+<input type="button" onclick="findAnswer()">
+<p id="frstQ"><img src="pix/3.jpg" width="185" height="185"></p></fieldset>
+<!-- this is for the second row --->
+<fieldset></fieldset>
+<!-->
+<input type="radio" value="C" name="rdi">(C)
+<input type="radio" value="L" name="rdi">(L)
+<input type="radio" value="G" name="rdi">(G)
+<input type="radio" value="T" name="rdi">(T)
+<input type="button" onclick="findAnswer()">
+<p id="scndQ"><img src="pix/8.jpg" width="185" height="185"></p></fieldset>
+ this is for the third row -->
+<fieldset></fieldset>
+<!---
+<input type="radio" value="I" name="rdu">(I)
+<input type="radio" value="J" name="rdu">(J)
+<input type="radio" value="K" name="rdu">(K)
+<input type="radio" value="F" name="rdu">(F)
+<input type="button" onclick="findAnswer()">
+<p id="thrdQ"><img src="pix/10.jpg" width="185" height="185"></p></fieldset>
+this is for the fourth row --->
+<fieldset></fieldset>
+<!--
+<input type="radio" value="A" name="rdy">(A)
+<input type="radio" value="B" name="rdy">(B)
+<input type="radio" value="H" name="rdy">(H)
+<input type="radio" value="P" name="rdy">(P)
+<input type="button" onclick="findAnswer()">
+<p id="frthQ"><img src="pix/13.jpg" width="185" height="185"></p></fieldset>
+-->
+
+
+
+
+
+
+<!--1 button that says "submit" -->
+<input type="button" value="submit answer" onclick="submitAnswers()">
+</form>
+
+<script>
+
+// amount of points the user has on the quiz
+var pts = 0;
+
+// answers for the quiz (the user's answer for each image)
+var ans_1;
+var ans_2;
+var ans_3;
+var ans_4;
+
+// the number containing the correct image answer
+var source_1;
+var source_2;
+var source_3;
+var source_4;
+
+function getPictures() {
+	//local variables for pooling answers (4 of them in 4 tables)
+	source_1 = Math.floor((Math.random()*4)+1);
+	document.getElementById("frstQ").innerHTML="<img src='Quiz images/" + source_1 +".jpg' width='185' height='185'>";
+
+	source_2 = Math.floor((Math.random()*4)+5) ;
+	document.getElementById("scndQ").innerHTML="<img src='Quiz images/" + source_2 +".jpg' width='185' height='185'>";
+			
+	source_3 = Math.floor((Math.random()*4)+9) ;
+	document.getElementById("thrdQ").innerHTML="<img src='Quiz images/" + source_3 +".jpg' width='185' height='185'>";
+			
+	source_4 = Math.floor((Math.random()*4)+13) ;
+	document.getElementById("frthQ").innerHTML="<img src='Quiz images/" + source_4 +".jpg' width='185' height='185'>";
+			
+}
+//function for the 4 buttons that confirm answer.
+function collectAnswers() {
+	ans_1 = findAnswer(document.getElementsByName("rdo"));
+	ans_2 = findAnswer(document.getElementsByName("rdu"));
+	ans_3 = findAnswer(document.getElementsByName("rdi"));
+	ans_4 = findAnswer(document.getElementsByName("rdy"));
+	
+}
+
+// functions with the buttons in the rows
+function findAnswer(radioButtons) {
+	
+	for (var index = 0; index < 5; index++) {
+		if(radioButtons[index].checked=true) {
+			return radioButtons[index].value;
+		}
+	}
+}							
+						
+function submitAnswers()	{
+	collectAnswers();
+	alert("test");	
+	//checks value of radio buttons (4 of them) for each correct answer, give an if statement that would add points. 16 if statements.
+	if(source_1=3 && ans_1=="M") {
+		pts= pts + 10;
+	}
+	if(source_1=4 && ans_1=="E") {
+		pts= pts + 10;
+	}
+	if(source_1=2 && ans_1=="N") {
+		pts= pts + 10;
+	}
+	if(source_1=1 && ans_1=="O") {
+		pts= pts +10;
+	}
+
+	if(source_2=7 && ans_2=="C") {
+		pts= pts + 10;
+	}
+	if(source_2=8 && ans_2=="J") {
+		pts= pts + 10;
+	}
+	if(source_2=5 && ans_2=="G") {
+		pts= pts + 10;
+	}
+	if(source_2=6 && ans_2=="L") {
+		pts=pts + 10;
+	}		
+
+	if(source_3=11 && ans_2=="D") {
+		pts= pts + 10;
+	}
+	if(source_3=9 && ans_2=="K") {
+		pts= pts + 10;
+	}
+	if(source_3=10 && ans_2=="I") {
+		pts= pts + 10;
+	}
+	if(source_3=12 && ans_2=="F") {
+		pts=pts + 10;
+	}
+	
+	if(source_4=14 && ans_2=="A") {
+		pts= pts + 10
+	}
+	if(source_4=15 && ans_2=="P") {
+		pts= pts + 10;
+	}
+	if(source_4=13 && ans_2=="B") {
+		pts= pts + 10;
+		alert("called");
+	}
+	if(source_4=16 && ans_2=="H") {
+		pts= pts + 10;	
+	}
+	alert("you got " + pts+ " points out of 40.  Reload the page to try again!");
+}		
+
+
+
+
+</script>
+</div>
+
+</body></html>
